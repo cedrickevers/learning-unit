@@ -6,6 +6,6 @@
 
         $user->setFirstName("Billy");
 
-        $this->assertEquals('Rabit', $user->getLastName());
+        $this->assertEquals('Billy', $user->getFirstName());
       }
 }
