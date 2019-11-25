@@ -1,29 +1,60 @@
 <?php
-  
-  class UserTest extends \PHPUnit\Framework\TestCase {
-    public function testThatWeCanGetTheFirstName () {
-        $user = new \App\Models\User;
 
-        $user->setFirstName("Billy");
+class userTest extends \PHPUnit\Framework\TestCase {
 
-        $this->assertEquals('Billy', $user->getFirstName());
-      }
-      public function testThatWeCanGetTheLastName () {
-        $user = new \App\Models\User;
-        $user->setLastName("Carl");
-        $this->assertEquals("Carl", $user->getLastName());
+    protected $user;
 
-      }
-
-      public function testFullNameIsReturned() {
-
-        $user = new \App\Models\User;
-
-        $user->setFirstName("Billy");
-        $user->setLastName("Carl");
-
-        $this->assertEquals("Billy Carl", $user->getFullName());
-      }
+    public function setUp() : void{
+    $this->user = new \App\Models\User;
+        
+    }
+ 
+    public function testIFWeCanGetFirstName(){
 
 
-}
+        $this->user->setFirstName("Miakis");
+
+       $this->assertEquals("Miakis", $this->user->getFirstName());   
+    }
+    public function testIFWeCanGetLastName(){
+
+
+       $this->user->setLastName("Sora");
+
+       $this->assertEquals("Sora", $this->user->getLastName());   
+    }
+
+    public function testThatWeCangetFullName(){
+
+        $this->user->setFirstName("Miakis");
+        $this->user->setLastName("Sora");
+
+        $this->assertEquals("Miakis Sora", $this->user->getFullName() );
+    }
+
+    public function testIfEmailUserCanBeSet(){
+
+        $this->user->setEmail("miakis@gmail.com");
+        
+        $this->assertEquals("miakis@gmail.com", $this->user->getEmail());
+    }
+
+    public function testIfVariablesContainCorrectValue(){
+
+        $this->user->setFirstName("Miakis");
+        $this->user->setLastName("Sora");
+        $this->user->setEmail("miakis@gmail.com");
+
+        $emailVariables = $this->user->getEmailvariables();
+        
+       $this->assertArrayHasKey("full_name", $emailVariables);
+       $this->assertArrayHasKey("email", $emailVariables);
+
+
+       $this->assertEquals($emailVariables["full_name"], "Miakis Sora");
+       $this->assertEquals($emailVariables["email"], "miakis@gmail.com");
+
+    }    
+
+
+    }
