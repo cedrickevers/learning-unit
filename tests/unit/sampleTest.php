@@ -1,7 +1,10 @@
 <?php
-  class SampleTest extends \PHPUnit\Framework\TestCase {
-    public function testTrueAssertsToTrue () {
-        $this->assertTrue(true);
+
+class SampleTest  extends PHPUnit\Framework\TestCase {
+
+   public function testIfTrue() { 
+
+    $this->assertTrue(true);
 
     }
-}
+}    
