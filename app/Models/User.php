@@ -1,4 +1,5 @@
 <?php
+<?php
 
 namespace App\Models;
 
@@ -42,6 +43,21 @@ class User {
     }
     
     public function getAddition(){
+        return array_sum($this->numbers);
+    }
+
+    
+    public function setDivision( $a, $b) {
+
+        if( $a && $b !==0){
+            return $a / $b;
+        }else{
+            print_r("can't divide by 0");
+        }
+
+    }
+    
+    public function getDivision(){
         return array_sum($this->numbers);
     }
 }
